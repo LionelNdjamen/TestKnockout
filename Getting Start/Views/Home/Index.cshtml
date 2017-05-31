@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Getting_Start.Models.Customer>
+<br />
+    <button type="button" class="btn btn-primary" id="idButtonCreate" data-toggle="modal" onclick="OpenModal()">
+        New Customer
+    </button>
+<br />
+<br />
+    <table class="table" id="tableCustomer">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sexe)
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody data-bind="foreach: Customers">
+            <tr>
+                <td data-bind="text: LastName"></td>
+                <td data-bind="text: FirstName"></td>
+                <td data-bind="text: Age"></td>
+                <td data-bind="text: Sexe"></td>
+                <td>
+                    <a data-bind="attr: { href: 'api/Customer/DeleteCustomer?Id='+Id}" id="idLink">Delete</a> | 
+                    <a data-bind="attr: { href: ''}" id="idLink">Edit</a>
+                </td>
+                @*<td data-bind="attr: {'data-something': 'api/Customer/DeleteCustomer?Id=2'}">Delete</td>*@
+            </tr>
+        </tbody>
+    </table> 
+
+@*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>*@
