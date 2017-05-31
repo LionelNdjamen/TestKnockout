@@ -133,7 +133,9 @@ namespace Getting_Start.Helpers
             {
                 connection.Open();
                 SqlCommand Cmd = new SqlCommand("[EDITCUSTOMER]", connection);
-                SqlParameter MyParam = new SqlParameter("@LastName", myCustomer.LastName); 
+                SqlParameter MyParam = new SqlParameter("@id", myCustomer.Id);
+                Cmd.Parameters.Add(MyParam);
+                MyParam = new SqlParameter("@LastName", myCustomer.LastName); 
                 Cmd.Parameters.Add(MyParam); 
                 MyParam = new SqlParameter("@FirtName", myCustomer.FirstName);
                 Cmd.Parameters.Add(MyParam);

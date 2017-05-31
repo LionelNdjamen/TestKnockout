@@ -19,28 +19,31 @@ namespace Getting_Start.Controllers
         public List<Customer> Get()
         {
             //var MesCustomers = new JavaScriptSerializer().Serialize(ClassConnection.GetCustomer());
-            //var listCustomer = ClassConnection.GetCustomer(); GetCustomer
+            //var listCustomer = ClassConnection.GetCustomer(); 
 
             return ServiceCustomer.GetCustomer(); 
         }
 
         // GET: api/Customer/5
-        //[Route("{Id:int}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        [Route("{Id:int}")]
+        public Customer Get(int id)
+        {
+            return ServiceCustomer.GetCustomerByid(id); 
+        }
 
         // POST: api/Customer
-        [Route("EditCustomer")]
+        [Route("CreateCustomer")]
         public void Post([FromBody]Customer customer)
         {
-            ServiceCustomer.EditCustomer(customer);
+            ServiceCustomer.CreateCustomer(customer); 
         }
 
         // PUT: api/Customer/5
-        public void Put(int id, [FromBody]string value)
+        [Route("EditCustomer")]
+        public void Put(int id, [FromBody]Customer customer)
         {
+            customer.Id = id;
+            ServiceCustomer.EditCustomer(customer); 
         }
 
         // DELETE: api/Customer/5

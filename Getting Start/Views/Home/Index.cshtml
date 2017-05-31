@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Getting_Start.Models.Customer>
 <br />
-    <button type="button" class="btn btn-primary" id="idButtonCreate" data-toggle="modal" onclick="OpenModal()">
+    <button type="button" class="btn btn-primary" id="idButtonCreate" data-toggle="modal" data-target="#myModal">
         New Customer
     </button>
 <br />
@@ -25,7 +25,7 @@
                 </th>
             </tr>
         </thead>
-        <tbody data-bind="foreach: Customers">
+        <tbody data-bind="foreach: Customers" id="bindingCustomer">
             <tr>
                 <td data-bind="text: LastName"></td>
                 <td data-bind="text: FirstName"></td>
@@ -40,22 +40,50 @@
         </tbody>
     </table> 
 
-@*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">New Customer</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <div id="creationCustomer">
+                    <div class="row">
+                        <label class="col-sm-4" for="idLastName">@Html.DisplayNameFor(model => model.LastName)</label>
+                        <input class="col-sm-4" id="idLastName" required placeholder="your last name" data-bind="value: lastName" />
+                    </div>
+                    <br />
+                    <div class="row">
+                        <label class="col-sm-4" for="idFirstName">@Html.DisplayNameFor(model => model.FirstName)</label>
+                        <input class="col-sm-4" id="idFirstName" required placeholder="your fisrt name" data-bind="value: firstName" />
+                    </div>
+                    <br />
+                    <div class="row">
+                        <label class="col-sm-4">@Html.DisplayNameFor(model => model.Age)</label>
+                        <input class="col-sm-4" data-bind="value: age" />
+                        @*<select class="col-sm-1" data-bind="options: age, selectedOptions: 1"></select>*@
+                    </div>
+                    <br />
+                    <div class="row">
+                        <label class="col-sm-4">@Html.DisplayNameFor(model => model.Sexe)</label>
+                        <div class="col-sm-3">
+                            <label>Homme</label>
+                            <input type="radio" name="sexeCustomer" value="Masculin" data-bind="checked: sexe" />
+                        </div>
+                        <div class="col-sm-3">
+                            <label>Femme</label>
+                            <input type="radio" name="sexeCustomer" value="Feminin" data-bind="checked: sexe" />
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
-</div>*@
+</div>
